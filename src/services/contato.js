@@ -1,6 +1,6 @@
 const database = require('../config/database')
 const bcrypt = require("bcrypt")
-const ModelCliente = require('../models/cliente')
+const ModelContado = require('../models/contato')
 const salt = 12;
 // const model = new modelExercicio()
 class Servicecliente

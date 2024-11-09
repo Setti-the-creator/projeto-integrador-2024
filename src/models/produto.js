@@ -1,32 +1,26 @@
 const database = require('../config/database')
-const ModelPedido = require('./pedido')
-class ModelCliente {
+
+class ModelProduto {
     constructor() {
-        this.model = database.db.define('cliente', {
+        this.model = database.db.define('produto', {
             id: {
                 type: database.db.Sequelize.INTEGER,
                 primaryKey: true,
+                
                 autoIncrement: true
             },
             nome: {
                 type: database.db.Sequelize.STRING
             },
-            email: {
-                type: database.db.Sequelize.STRING,
-                unique: true
-            },
-            senha: {
+           tipo:
+            {
                 type: database.db.Sequelize.STRING
             },
             telefone:{
                 type: database.db.Sequelize.INTEGER,
                 unique: true 
-            },
-            endereco: {
-                type: database.db.Sequelize.STRING
             }
-        });
-        this.model.hasOne(ModelPedido.model, { foreignKey: 'ClienteId' });
+        })
     }
 }
-module.exports = new ModelCliente().model
+module.exports = new ModelContado().model
