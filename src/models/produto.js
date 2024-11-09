@@ -23,4 +23,4 @@ class ModelProduto {
         })
     }
 }
-module.exports = new ModelContado().model
+module.exports = new ModelProduto().model
