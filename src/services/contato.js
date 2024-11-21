@@ -1,64 +1,64 @@
 const database = require('../config/database')
 const bcrypt = require("bcrypt")
-const ModelContado = require('../models/contato')
+const ModelContato = require('../models/contato')
 const salt = 12;
 // const model = new modelExercicio()
-class Servicecliente
+class Servicecontato
 {
     
     async Mostrar()
      {
-     return ModelCliente.findAll()
+     return ModelContato.findAll()
      }
-    async Adicionar(nome,email, senha,telefone)
+    async Adicionar(nome,email,telefone,msg)
     {
-        if(!nome || !telefone|| !email|| !senha)
+        if(!nome || !telefone|| !email)
         {
             throw new Error("Favor preencher todos os dados obrigatórios.")
         }
-        const hashSenha = await bcrypt.hash( senha,salt)
-    return ModelCliente.create({senha: hashSenha, nome, telefone, email})
+        
+    return ModelContato.create({nome, telefone, email,msg})
     }
 
-    async Alterar(id, nome,email, senha, telefone)
+    async Alterar(id,nome,email,telefone, msg)
     {
         console.log(id)
         if(!id)
         {
             throw new Error("Favor informar dado necessário (id)")
         }
-        const cliente = await ModelCliente.findByPk(id)
-        if(!cliente)
+        const contato = await ModelContato.findByPk(id)
+        if(!contato)
             {
-                throw new Error("Cliente nao encontrado")
+                throw new Error("contato nao encontrado")
             }
-        cliente.nome = nome 
+        contato.nome = nome 
         ?nome
-        :cliente.nome
-        cliente.email = email 
+        :contato.nome
+        contato.email = email 
         ? email
-        :cliente.email
-        cliente.senha = senha 
-        ?await bcrypt.hash(senha,salt)
-        :cliente.nome
-        cliente.telefone = telefone
+        :contato.email
+        contato.telefone = telefone
         ? telefone
-        :cliente.telefone
+        :contato.telefone
+        contato.msg = msg
+        ? msg
+        :contato.msg
         
 
-        cliente.save()
-        return cliente
+        contato.save()
+        return contato
     }
     async Deletar(id)
     {
-    const cliente = await ModelCliente.findByPk(id)
-    if(!cliente)
+    const contato = await ModelContato.findByPk(id)
+    if(!contato)
     {
-        throw new Error("Cliente nao encontrado")
+        throw new Error("contato nao encontrado")
     }
-    return cliente.destroy()
+    return contato.destroy()
     }
     
 }
 
-module.exports = Servicecliente;
+module.exports = Servicecontato;

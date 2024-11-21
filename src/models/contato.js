@@ -18,6 +18,10 @@ class ModelContado {
             telefone:{
                 type: database.db.Sequelize.INTEGER,
                 unique: true 
+            },
+            msg:
+            {
+                type:database.db.STRING
             }
         })
     }
