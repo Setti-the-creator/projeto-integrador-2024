@@ -30,8 +30,6 @@ class ModelPedido {
             }
         });
         this.model.belongsTo(ModelCliente.model, { foreignKey: 'Id' });
-        // this.model.belongsTo(ModelPedido)
-        // cliente.hasOne(cliente)
     }
 }
 module.exports = new ModelPedido().model
